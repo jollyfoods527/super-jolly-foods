@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jolly Foods & Natural Preserves</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body { font-family: 'Poppins', sans-serif; }
+        .font-serif-gourmet { font-family: 'Playfair Display', serif; }
+
+        /* Estilo para las pestañas de café */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s; }
+        .tab-btn.active { border-bottom: 3px solid #0f2e1b; color: #0f2e1b; font-weight: 600; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-[#fcfdfb] text-gray-800 antialiased">
+
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-[#0f2e1b] rounded-xl flex items-center justify-center text-white font-bold text-xl font-serif-gourmet">J</div>
+                <span class="text-sm font-bold tracking-wider uppercase">Natural Preserves</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8 text-[13px] font-medium text-gray-600 uppercase tracking-widest">
+                <a href="#inicio" class="hover:text-[#0f2e1b]">Inicio</a>
+                <a href="#nosotros" class="hover:text-[#0f2e1b]">Nosotros</a>
+                <a href="#variedades" class="hover:text-[#0f2e1b]">Variedades</a>
+                <a href="#contacto" class="hover:text-[#0f2e1b]">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-leaf text-emerald-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Sostenibilidad</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Comprometidos con prácticas responsables y el cuidado del medio ambiente en cada proceso.</p>
+                </div>
+                <div class="p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-award text-amber-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Calidad Premium</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Seleccionamos lo mejor de nuestra tierra para ofrecerte excelencia en cada producto.</p>
+                </div>
+                <div class="p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-earth-americas text-blue-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Exportación</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Llevamos lo mejor de Costa Rica a tu mesa, en cualquier parte del mundo.</p>
+                </div>
+                <div class="p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-heart text-red-600"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Hecho en Costa Rica</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Orgullosamente costarricenses, trabajando con pasión por lo que hacemos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="variedades" class="py-20 bg-[#0f2e1b] text-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
+            <h2 class="font-serif-gourmet text-3xl mb-12">Nuestras Variedades de Café</h2>
+            
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-12 border-b border-white/10 pb-4">
+                <button onclick="openTab(event, 'v-sarchi')" class="tab-btn px-4 py-2 text-sm uppercase tracking-widest active">Villa Sarchi</button>
+                <button onclick="openTab(event, 'v-geisha')" class="tab-btn px-4 py-2 text-sm uppercase tracking-widest">Geisha</button>
+                <button onclick="openTab(event, 'v-typica')" class="tab-btn px-4 py-2 text-sm uppercase tracking-widest">Typica Lima</button>
+                <button onclick="openTab(event, 'v-kenya')" class="tab-btn px-4 py-2 text-sm uppercase tracking-widest">Kenya SL28</button>
+            </div>
+
+            <div id="v-sarchi" class="tab-content active">
+                <div class="max-w-2xl mx-auto bg-white/5 p-8 rounded-3xl border border-white/10">
+                    <h4 class="text-2xl font-serif-gourmet text-amber-400 mb-4">Villa Sarchi</h4>
+                    <p class="text-gray-300 leading-relaxed">Originario del valle de Sarchí. Se caracteriza por una acidez cítrica brillante, cuerpo medio y un perfil de taza muy elegante con notas a chocolate y frutas dulces.</p>
+                    <div class="mt-6 flex justify-center gap-8 text-xs uppercase tracking-tighter text-amber-200">
+                        <span><i class="fa-solid fa-droplet mr-1"></i> Acidez: Alta</span>
+                        <span><i class="fa-solid fa-mug-hot mr-1"></i> Cuerpo: Medio</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="v-geisha" class="tab-content">
+                <div class="max-w-2xl mx-auto bg-white/5 p-8 rounded-3xl border border-white/10">
+                    <h4 class="text-2xl font-serif-gourmet text-amber-400 mb-4">Variedad Geisha</h4>
+                    <p class="text-gray-300 leading-relaxed">La joya de la corona. Aroma intenso a jazmín y flores blancas. En taza presenta notas de té verde, bergamota y una claridad asombrosa.</p>
+                    <div class="mt-6 flex justify-center gap-8 text-xs uppercase tracking-tighter text-amber-200">
+                        <span><i class="fa-solid fa-droplet mr-1"></i> Acidez: Brillante</span>
+                        <span><i class="fa-solid fa-mug-hot mr-1"></i> Cuerpo: Sedoso</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="v-typica" class="tab-content">
+                <div class="max-w-2xl mx-auto bg-white/5 p-8 rounded-3xl border border-white/10">
+                    <h4 class="text-2xl font-serif-gourmet text-amber-400 mb-4">Typica Lima</h4>
+                    <p class="text-gray-300 leading-relaxed">Una de las variedades más antiguas y puras. Ofrece una taza muy equilibrada, con dulzor de caña de azúcar y un postgusto limpio y prolongado.</p>
+                    <div class="mt-6 flex justify-center gap-8 text-xs uppercase tracking-tighter text-amber-200">
+                        <span><i class="fa-solid fa-droplet mr-1"></i> Acidez: Moderada</span>
+                        <span><i class="fa-solid fa-mug-hot mr-1"></i> Cuerpo: Completo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="v-kenya" class="tab-content">
+                <div class="max-w-2xl mx-auto bg-white/5 p-8 rounded-3xl border border-white/10">
+                    <h4 class="text-2xl font-serif-gourmet text-amber-400 mb-4">Kenya SL28</h4>
+                    <p class="text-gray-300 leading-relaxed">Adaptado a nuestras tierras de altura. Destaca por su complejidad frutal, notas de grosella negra y una estructura ácida muy potente y placentera.</p>
+                    <div class="mt-6 flex justify-center gap-8 text-xs uppercase tracking-tighter text-amber-200">
+                        <span><i class="fa-solid fa-droplet mr-1"></i> Acidez: Muy Alta</span>
+                        <span><i class="fa-solid fa-mug-hot mr-1"></i> Cuerpo: Denso</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-3 gap-12">
+            <div>
+                <h4 class="font-bold text-xl mb-6">Contáctanos</h4>
+                <div class="space-y-3 text-gray-500 text-sm">
+                    <p><i class="fa-solid fa-phone text-[#0f2e1b] mr-2"></i> +506 8943 5264</p>
+                    <p><i class="fa-solid fa-phone text-[#0f2e1b] mr-2"></i> +506 8943 5264</p>
+                    <p><i class="fa-solid fa-envelope text-[#0f2e1b] mr-2"></i> guillermopuchol@gmail.com</p>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-xl mb-6 text-emerald-800">¡Hablemos!</h4>
+                <p class="text-gray-500 text-sm mb-6">Estamos listos para atenderte y ofrecerte los mejores productos naturales de Costa Rica.</p>
+                <a href="mailto:guillermopuchol@gmail.com" class="inline-block bg-[#0f2e1b] text-white px-8 py-3 rounded-lg font-semibold hover:bg-emerald-900 transition">Contáctanos</a>
+            </div>
+            <div>
+                <h4 class="font-bold text-xl mb-6">Síguenos</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-[#0f2e1b] rounded-full flex items-center justify-center text-white hover:scale-110 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 bg-[#0f2e1b] rounded-full flex items-center justify-center text-white hover:scale-110 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-gray-50 text-center text-[11px] text-gray-400">
+            © 2026 Natural Preserves Costa Rica. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
