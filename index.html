@@ -3,368 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jolly Foods - Del Origen a tu Éxito</title>
+    <title>Jolly Foods - Café de Especialidad</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-        body{font-family:'Arial',sans-serif;background:#0A2E1A;color:#fff}
+        body{font-family:Arial,sans-serif;background:#0A2E1A;color:#fff}
         header{background:#000;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;border-bottom:3px solid #D4AF37}
         .logo span{font-weight:bold;font-size:22px;color:#D4AF37}
-        nav{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
-        nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:14px;cursor:pointer;transition:0.3s}
+        nav{display:flex;gap:25px;align-items:center;flex-wrap:wrap}
+        nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:14px}
         nav a:hover{color:#D4AF37}
-        #cartBtn{background:#D4AF37;color:#000;border:none;padding:10px 20px;font-weight:bold;cursor:pointer;border-radius:5px}
-        #cartBtn:hover{background:#fff}
-        .hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
-        .hero video{position:absolute;width:100%;height:100%;object-fit:cover;z-index:1;filter:brightness(0.6) saturate(1.2)}
-        .hero-overlay{position:absolute;width:100%;height:100%;background:radial-gradient(circle,rgba(10,46,26,0.2) 0%,rgba(10,46,26,0.85) 100%);z-index:2}
-        .hero-content{position:relative;z-index:3;text-align:center;padding:0 20px;max-width:1000px}
-        .hero h1{font-size:5rem;margin-bottom:25px;color:#D4AF37;text-shadow:4px 4px 20px #000;line-height:1.1;letter-spacing:2px}
-        .hero .subtitle{font-size:2.2rem;margin-bottom:50px;color:#fff;text-shadow:3px 3px 10px #000;font-weight:300}
-        .btn{background:#D4AF37;color:#000;padding:20px 50px;border:none;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block;font-size:17px;transition:0.3s;border-radius:5px;box-shadow:0 4px 20px rgba(212,175,55,0.5);text-transform:uppercase}
-        .btn:hover{background:#fff;transform:translateY(-3px);box-shadow:0 8px 30px rgba(212,175,55,0.7)}
-        .btn-small{padding:12px 25px;font-size:14px;margin-top:15px}
-        section{padding:100px 5%;max-width:1400px;margin:auto;background:#0A2E1A}
-        h2{font-size:3.2rem;margin-bottom:50px;color:#D4AF37;text-align:center;text-shadow:2px 2px 10px #000}
-        h3{color:#D4AF37;font-size:2rem;margin-bottom:20px}
-        h4{color:#D4AF37;font-size:1.4rem;margin:20px 0 10px}
-        .gold-text{color:#D4AF37}
-        .nosotros-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-        .nosotros-grid img{width:100%;border:4px solid #D4AF37;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
-        .productos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:30px}
-        .producto-card{background:#0A2E1A;padding:25px;border:2px solid #D4AF37;border-radius:10px;text-align:center;transition:0.3s}
-        .producto-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(212,175,55,0.4)}
-        .producto-card img{width:100%;height:200px;object-fit:cover;border-radius:8px;margin-bottom:15px;background:#000}
-        .producto-card h4{font-size:1.2rem;margin:10px 0}
-        .producto-card .precio{color:#D4AF37;font-size:1.8rem;font-weight:bold;margin:15px 0}
-        .linea-titulo{background:#000;padding:20px;margin:40px 0 20px;border-left:5px solid #D4AF37}
-        .linea-titulo h3{margin:0;font-size:1.8rem}
-        .variedades{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;margin-top:50px}
-        .variedad{background:linear-gradient(135deg,#000 0%,#0d0d0d 100%);padding:30px;border:2px solid #D4AF37;cursor:pointer;transition:0.4s;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.5)}
-        .variedad:hover{border-color:#fff;transform:translateY(-8px);box-shadow:0 15px 50px rgba(212,175,55,0.4)}
-        .variedad h4{font-size:1.5rem;margin-bottom:12px}
-        .variedad .origen{font-size:14px;color:#aaa;margin-bottom:15px;font-style:italic}
-        .variedad .badge{display:inline-block;background:#D4AF37;color:#000;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:bold;margin:5px 5px 0 0}
-        .variedad-desc{display:none;margin-top:20px;font-size:15px;line-height:2;background:#0A2E1A;padding:25px;border-radius:8px;border:2px solid #D4AF37}
-        .variedad-desc.active{display:block}
-        .variedad-desc strong{color:#D4AF37;display:block;margin-top:15px;margin-bottom:8px;font-size:16px}
-        .variedad-desc p{margin:12px 0}
-        .calidad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;text-align:center}
-        .calidad-card{background:linear-gradient(135deg,#000 0%,#1a1a1a 100%);padding:50px 25px;border:3px solid #D4AF37;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
-        .calidad-card h3{font-size:3.5rem}
-        .mayoristas-hero{position:relative;height:70vh;overflow:hidden;margin:50px 0;border:4px solid #D4AF37;border-radius:10px}
-        .mayoristas-hero video{width:100%;height:100%;object-fit:cover;filter:brightness(0.7)}
-        .slogan{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;background:rgba(0,0,0,0.9);padding:50px;border:3px solid #D4AF37;border-radius:10px}
-        .slogan h3{font-size:3rem;margin:0;text-shadow:3px 3px 10px #000}
-        .formulario{background:linear-gradient(135deg,#000 0%,#1a1a1a 100%);padding:50px;margin-top:30px;border:3px solid #D4AF37;border-radius:10px}
-        .formulario input,.formulario textarea,.formulario select{width:100%;padding:18px;margin:15px 0;background:#0A2E1A;border:2px solid #D4AF37;color:#fff;font-size:16px;border-radius:5px}
-        .contacto-item{background:linear-gradient(135deg,#000 0%,#1a1a1a 100%);margin:25px 0;padding:30px;cursor:pointer;border:2px solid #D4AF37;border-radius:10px}
-        .contacto-content{display:none;padding:25px 0;font-size:18px;line-height:2}
-        .contacto-content.active{display:block}
-        .contacto-content p{margin:12px 0}
-        .contacto-content strong{color:#D4AF37}
-        #musicBtn{position:fixed;bottom:30px;right:30px;background:#D4AF37;color:#000;border:none;border-radius:50%;width:65px;height:65px;font-size:26px;cursor:pointer;z-index:1000;box-shadow:0 0 25px rgba(212,175,55,0.6)}
-        footer{background:#000;padding:60px 5%;text-align:center;border-top:4px solid #D4AF37}
-        .cart-modal{display:none;position:fixed;top:0;right:0;width:420px;height:100vh;background:linear-gradient(180deg,#000 0%,#0A2E1A 100%);border-left:4px solid #D4AF37;z-index:2000;padding:35px;overflow-y:auto}
-        .cart-modal.active{display:block}
-        .cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px}
-        .cart-item{background:#0A2E1A;padding:18px;margin:12px 0;border:2px solid #D4AF37;display:flex;justify-content:space-between;align-items:center;border-radius:8px}
-        .cart-item button{background:red;color:#fff;border:none;padding:8px 12px;cursor:pointer;border-radius:5px}
-        .cart-total{margin-top:35px;padding-top:25px;border-top:3px solid #D4AF37}
-        @media(max-width:768px){.nosotros-grid,.calidad-grid{grid-template-columns:1fr}.hero h1{font-size:2.8rem}.hero .subtitle{font-size:1.5rem}nav{gap:10px}.cart-modal{width:100%}}
+        #cartBtn{background:#D4AF37;color:#000;border:none;padding:8px 20px;border-radius:5px;font-weight:bold;cursor:pointer}
+        .hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+        .hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.85)}
+        .hero-content{position:relative;z-index:2;padding:0 20px}
+        .hero h1{font-size:6.5rem;color:#D4AF37;text-shadow:0 0 30px rgba(212,175,55,0.8);margin-bottom:20px}
+        .hero h2{font-size:2rem;margin-bottom:15px}
+        .hero p{font-size:1.2rem;margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto}
+        .btn{padding:15px 35px;border:2px solid #D4AF37;background:transparent;color:#D4AF37;font-weight:bold;cursor:pointer;border-radius:8px;margin:10px}
+        .btn:hover{background:#D4AF37;color:#000}
+        section{padding:80px 5%}
+        .section-title{text-align:center;font-size:2.5rem;color:#D4AF37;margin-bottom:50px}
+        .nosotros-content{max-width:900px;margin:0 auto;line-height:1.9;font-size:1.1rem}
+        .nosotros-content p{margin-bottom:20px}
+        .btn-antonio{display:inline-block;background:#D4AF37;color:#000;padding:12px 30px;border-radius:8px;font-weight:bold;text-decoration:none;margin-top:20px}
+        .catalogo-item{background:#000;margin:20px 0;padding:30px;cursor:pointer;border:3px solid #D4AF37;border-radius:12px}
+        .catalogo-header{display:flex;justify-content:space-between;align-items:center;font-size:1.3rem;font-weight:bold}
+        .catalogo-content{max-height:0;overflow:hidden;transition:max-height 0.6s}
+        .catalogo-content.active{max-height:3000px;padding:30px 0 0}
+        .productos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:25px}
+        .producto-card{background:#0A2E1A;padding:20px;border:2px solid #D4AF37;border-radius:12px;text-align:center}
+        .producto-card img{width:100%;max-width:200px;margin-bottom:15px}
+        .producto-card h4{color:#D4AF37;margin-bottom:10px}
+        .producto-card p{font-size:0.9rem;margin-bottom:10px;line-height:1.6}
+        .precio{font-size:1.5rem;color:#D4AF37;font-weight:bold;margin:10px 0}
+        .add-cart{background:#D4AF37;color:#000;border:none;padding:10px 25px;border-radius:5px;font-weight:bold;cursor:pointer;width:100%}
+        .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;justify-content:center}
+        .tab-btn{padding:10px 20px;border:2px solid #D4AF37;background:transparent;color:#D4AF37;cursor:pointer;border-radius:8px;font-weight:bold}
+        .tab-btn.active{background:#D4AF37;color:#000}
+        .tab-content{display:none}
+        .tab-content.active{display:block}
+        .cafe-ficha{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+        .cafe-ficha img{width:100%;border-radius:12px;border:3px solid #D4AF37}
+        .ficha-datos{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+        .dato-box{background:#000;padding:15px;border:2px solid #D4AF37;border-radius:8px}
+        .dato-box strong{color:#D4AF37;display:block;margin-bottom:5px;font-size:0.9rem}
+        #contacto-btn{background:#D4AF37;color:#000;padding:15px 30px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;font-size:1.1rem}
+        #contacto-info{max-height:0;overflow:hidden;transition:max-height 0.5s;background:#000;padding:0 30px;margin-top:20px;border-radius:12px}
+        #contacto-info.active{max-height:300px;padding:30px}
+        .form-group{margin-bottom:20px}
+        .form-group label{display:block;color:#D4AF37;margin-bottom:8px;font-weight:bold}
+        .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px;border:2px solid #D4AF37;background:#000;color:#fff;border-radius:8px;font-size:1rem}
+        .form-group textarea{min-height:120px}
+        #mayoristas video{width:100%;border-radius:12px;border:3px solid #D4AF37;margin-top:30px}
+        .cart-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;align-items:center;justify-content:center}
+        .cart-modal.active{display:flex}
+        .cart-content{background:#0A2E1A;padding:40px;border:3px solid #D4AF37;border-radius:12px;max-width:500px;width:90%}
+        .cart-item{display:flex;justify-content:space-between;margin:15px 0;padding-bottom:15px;border-bottom:1px solid #D4AF37}
+        footer{background:#000;padding:40px 5%;text-align:center;border-top:3px solid #D4AF37}
+        @media(max-width:768px){.hero h1{font-size:3rem}nav{gap:10px}nav a{font-size:12px}.cafe-ficha{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
     <header>
         <div class="logo"><span>JOLLY FOODS</span></div>
         <nav>
-            <a onclick="scrollToSection('inicio')">INICIO</a>
-            <a onclick="scrollToSection('nosotros')">NOSOTROS</a>
-            <a onclick="scrollToSection('catalogo')">CATÁLOGO</a>
-            <a onclick="scrollToSection('cafe')">CAFÉ GOURMET</a>
-            <a onclick="scrollToSection('calidad')">CALIDAD</a>
-            <a onclick="scrollToSection('mayoristas')">MAYORISTAS</a>
-            <a onclick="scrollToSection('pedidos')">PEDIDOS</a>
-            <a onclick="scrollToSection('contacto')">CONTACTO</a>
-            <button id="cartBtn" onclick="toggleCart()">🛒 Carrito (<span id="cartCount">0</span>)</button>
+            <a href="#inicio">INICIO</a>
+            <a href="#nosotros">NOSOTROS</a>
+            <a href="#catalogo">CATÁLOGO</a>
+            <a href="#mayoristas">MAYORISTAS</a>
+            <a href="#contacto">CONTACTO</a>
+            <a href="#pedidos">PEDIDOS</a>
+            <button id="cartBtn">CARRITO <span id="cartCount">0</span></button>
         </nav>
     </header>
-
-    <div class="hero" id="inicio">
+    <section class="hero" id="inicio">
         <video autoplay muted loop playsinline>
-            <source src="cafe-rojo.mp4" type="video/mp4">
+            <source src="zerezas.mp4.mp4" type="video/mp4">
         </video>
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>DEL ORIGEN A TU ÉXITO</h1>
-            <p class="subtitle">Calidad y Sostenibilidad en cada fruto</p>
-            <a class="btn" onclick="scrollToSection('catalogo')">EXPLORA NUESTRO CATÁLOGO</a>
+            <h1>CAFÉ DE ESPECIALIDAD</h1>
+            <h2>Del Origen a tu Éxito - Costa Rica</h2>
+            <p>Microlotes exclusivos SCA 90+. Finca El Puchol. Ediciones limitadas de 40kg.</p>
+            <button class="btn" onclick="document.getElementById('catalogo').scrollIntoView()">Descubrir Variedades</button>
+            <button class="btn" onclick="document.getElementById('mayoristas').scrollIntoView()">Soy Mayorista</button>
         </div>
-    </div>
-
+    </section>
     <section id="nosotros">
-        <h2>NOSOTROS</h2>
-        <div class="nosotros-grid">
-            <div>
-                <h3 class="gold-text">Más de 15 años conectando el campo con el mundo</h3>
-                <p style="line-height:1.9;font-size:18px;margin:25px 0">Jolly Foods nace en el corazón de Santander, Colombia. Somos el puente entre 300+ familias agricultoras y los mercados más exigentes de Europa, USA y Asia.</p>
-                <p style="line-height:1.9;font-size:18px">No somos intermediarios. Somos socios estratégicos. Acompañamos cada cosecha, garantizamos trazabilidad total y pagamos precio justo. Porque cuando el origen gana, tu negocio gana.</p>
-                <p class="gold-text" style="font-size:22px;font-weight:bold;margin-top:35px">“Calidad sin atajos. Sostenibilidad sin excusas.”</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800" alt="Campo Jolly Foods">
+        <h2 class="section-title">NOSOTROS</h2>
+        <div class="nosotros-content">
+            <p>Representa una experiencia única llena de distinción y elegancia, donde cada detalle refleja unión y calidez.</p>
+            <p>Más que una marca, es la pasión por lo exquisito, ofreciendo productos selectos que evocan calidad y tradición.</p>
+            <p>Los palmitos se cortan del núcleo de palmeras nativas de América del Sur y América Central. Luego de la cosecha, se cortan en diferentes presentaciones y se envasan en agua o salmuera.</p>
+            <p>El delicado sabor de los palmitos convierte a este alimento en una opción popular para ensaladas, pero también permite la preparación de una gran variedad de recetas creativas y nutritivas.</p>
+            <p>Contamos con un profesional en el sector cafetalero llamado Antonio Barrantes.</p>
+            <a href="https://www.instagram.com/reel/DFCmrJEq8Na/" target="_blank" rel="noopener" class="btn-antonio">CONOCE A ANTONIO BARRANTES</a>
         </div>
     </section>
-
     <section id="catalogo">
-        <h2>NUESTRO CATÁLOGO</h2>
-        
-        <div class="linea-titulo"><h3>Línea de Palmito</h3></div>
-        <div class="productos-grid">
-            <div class="producto-card">
-                <img src="palmito-productos.png" alt="Palmito en Conserva Clásico">
-                <h4>Palmito en Conserva Clásico</h4>
-                <div class="precio">$12</div>
-                <button class="btn btn-small" onclick="addToCart('Palmito en Conserva Clásico', '$12', event)">AÑADIR AL CARRITO</button>
-            </div>
-            <div class="producto-card">
-                <img src="palmito-productos.png" alt="Palmito Premium Entero">
-                <h4>Palmito Premium Entero</h4>
-                <div class="precio">$15</div>
-                <button class="btn btn-small" onclick="addToCart('Palmito Premium Entero', '$15', event)">AÑADIR AL CARRITO</button>
-            </div>
-            <div class="producto-card">
-                <img src="palmito-productos.png" alt="Palmito en Rodajas">
-                <h4>Palmito en Rodajas</h4>
-                <div class="precio">$10</div>
-                <button class="btn btn-small" onclick="addToCart('Palmito en Rodajas', '$10', event)">AÑADIR AL CARRITO</button>
+        <h2 class="section-title">CATÁLOGO COMPLETO</h2>
+        <div class="catalogo-item" onclick="toggleCat(this)">
+            <div class="catalogo-header">LÍNEA PALMITO <span>▼</span></div>
+            <div class="catalogo-content">
+                <p>Corazón de palmito ecuatoriano gourmet</p>
+                <img src="palmito.png" alt="Palmito" style="width:300px;margin:20px auto;display:block">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <h4>Palmito Entero Premium</h4>
+                        <p>Corazones seleccionados a mano, textura tierna, sabor suave. Origen: Santo Domingo, Ecuador. Peso neto: 400g.</p>
+                        <div class="precio">$4.50</div>
+                        <button class="add-cart" onclick="addCart('Palmito Entero Premium',4.5)">AGREGAR AL CARRITO</button>
+                    </div>
+                    <div class="producto-card">
+                        <h4>Palmito en Rodajas</h4>
+                        <p>Corte uniforme 5mm, listo para usar. Textura crocante. Empaque: 300g.</p>
+                        <div class="precio">$4.20</div>
+                        <button class="add-cart" onclick="addCart('Palmito en Rodajas',4.2)">AGREGAR AL CARRITO</button>
+                    </div>
+                    <div class="producto-card">
+                        <h4>Palmito en Trozos</h4>
+                        <p>Trozos medianos para salteados. Rendimiento 3-4 porciones. Peso: 350g.</p>
+                        <div class="precio">$3.80</div>
+                        <button class="add-cart" onclick="addCart('Palmito en Trozos',3.8)">AGREGAR AL CARRITO</button>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="linea-titulo"><h3>Línea de Piña Dorada</h3></div>
-        <div class="productos-grid">
-            <div class="producto-card">
-                <img src="pina-productos.png" alt="Zumo de Piña 100% Natural">
-                <h4>Zumo de Piña 100% Natural</h4>
-                <div class="precio">$8</div>
-                <button class="btn btn-small" onclick="addToCart('Zumo de Piña 100% Natural', '$8', event)">AÑADIR AL CARRITO</button>
+        <div class="catalogo-item" onclick="toggleCat(this)">
+            <div class="catalogo-header">LÍNEA PIÑA <span>▼</span></div>
+            <div class="catalogo-content">
+                <p>Piña Golden ecuatoriana de exportación</p>
+                <img src="pina-productos.png.png" alt="Piña" style="width:300px;margin:20px auto;display:block">
+                <div class="productos-grid">
+                    <div class="producto-card">
+                        <h4>Piña en Rodajas</h4>
+                        <p>Dulzura 16° Brix, proceso IQF. Sin azúcar añadida. 8 rodajas calibre A.</p>
+                        <div class="precio">$3.90</div>
+                        <button class="add-cart" onclick="addCart('Piña en Rodajas',3.9)">AGREGAR AL CARRITO</button>
+                    </div>
+                    <div class="producto-card">
+                        <h4>Piña en Trozos</h4>
+                        <p>Cubos 2cm, ideal repostería y cocteles. IQF. 500g.</p>
+                        <div class="precio">$3.60</div>
+                        <button class="add-cart" onclick="addCart('Piña en Trozos',3.6)">AGREGAR AL CARRITO</button>
+                    </div>
+                    <div class="producto-card">
+                        <h4>Jugo de Piña Natural</h4>
+                        <p>100% fruta, sin concentrados. 1L. Pasteurizado.</p>
+                        <div class="precio">$2.50</div>
+                        <button class="add-cart" onclick="addCart('Jugo de Piña',2.5)">AGREGAR AL CARRITO</button>
+                    </div>
+                </div>
             </div>
-            <div class="producto-card">
-                <img src="pina-productos.png" alt="Rodajas de Piña en Almíbar">
-                <h4>Rodajas de Piña en Almíbar</h4>
-                <div class="precio">$9</div>
-                <button class="btn btn-small" onclick="addToCart('Rodajas de Piña en Almíbar', '$9', event)">AÑADIR AL CARRITO</button>
-            </div>
-            <div class="producto-card">
-                <img src="pina-productos.png" alt="Crunchyroll de Piña Deshidratada">
-                <h4>Crunchyroll de Piña Deshidratada</h4>
-                <div class="precio">$6</div>
-                <button class="btn btn-small" onclick="addToCart('Crunchyroll de Piña Deshidratada', '$6', event)">AÑADIR AL CARRITO</button>
+        </div>
+        <div class="catalogo-item" onclick="toggleCat(this)">
+            <div class="catalogo-header">LÍNEA CAFÉ <span>▼</span></div>
+            <div class="catalogo-content">
+                <p>Café de especialidad costarricense</p>
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="showTab(event,'geisha')">GEISHA</button>
+                    <button class="tab-btn" onclick="showTab(event,'villa')">VILLA SARCHI</button>
+                    <button class="tab-btn" onclick="showTab(event,'kenia')">KENIA SL28</button>
+                    <button class="tab-btn" onclick="showTab(event,'centro')">CENTROAMERICANO</button>
+                    <button class="tab-btn" onclick="showTab(event,'lima')">TYPICA LIMA</button>
+                    <button class="tab-btn" onclick="showTab(event,'lourdes')">TYPICA LOURDES</button>
+                    <button class="tab-btn" onclick="showTab(event,'roque')">TYPICA SAN ROQUE</button>
+                </div>
+                <div id="geisha" class="tab-content active">
+                    <div class="cafe-ficha">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Geisha">
+                        <div>
+                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">GEISHA</h3>
+                            <p style="margin-bottom:20px">FINCA EL PUCHOL - Naranjo, Costa Rica</p>
+                            <p>Considerada la más exclusiva del planeta. Originaria de Etiopía, perfeccionada en Panamá y ahora cultivada en nuestro microclima de Naranjo a 1.500 msnm. Aromas intensos a jazmín, sabor a té de bergamota, mandarina y miel silvestre. Cuerpo de seda, acidez brillante pero no agresiva. Edición limitada a 40kg.</p>
+                            <div class="ficha-datos">
+                                <div class="dato-box"><strong>ALTITUD</strong>1.500 msnm</div>
+                                <div class="dato-box"><strong>PROCESO</strong>Lavado 24h + secado 15d solar</div>
+                                <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
+                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 90-92</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="villa" class="tab-content">
+                    <div class="cafe-ficha">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Villa Sarchi">
+                        <div>
+                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">VILLA SARCHI</h3>
+                            <p style="margin-bottom:20px">Valle Occidental, Costa Rica</p>
+                            <p>Variedad 100% costarricense, mutación natural de Bourbon. Cultivada a 1450msnm. Perfil: cítrico, miel de abeja, acidez brillante. Cuerpo medio-cremoso. Ideal para espresso.</p>
+                            <div class="ficha-datos">
+                                <div class="dato-box"><strong>ALTITUD</strong>1.450 msnm</div>
+                                <div class="dato-box"><strong>PROCESO</strong>Lavado 18h + secado 12d</div>
+                                <div class="dato-box"><strong>TUESTE</strong>Medio</div>
+                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 86-88</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="kenia" class="tab-content">
+                    <div class="cafe-ficha">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Kenia">
+                        <div>
+                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">KENIA SL28</h3>
+                            <p style="margin-bottom:20px">Brunca, Costa Rica</p>
+                            <p>Genética legendaria de Kenia, adaptada a Costa Rica. Notas: grosella negra, tomate seco, vino tinto. Acidez vínica intensa.</p>
+                            <div class="ficha-datos">
+                                <div class="dato-box"><strong>ALTITUD</strong>1.600 msnm</div>
+                                <div class="dato-box"><strong>PROCESO</strong>Honey rojo 21d</div>
+                                <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
+                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 87-89</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="centro" class="tab-content">
+                    <div class="cafe-ficha">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Centroamericano">
+                        <div>
+                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">CENTROAMERICANO</h3>
+                            <p style="margin-bottom:20px">Los Santos, Costa Rica</p>
+                            <p>Híbrido F1 resistente a roya. Sabor: chocolate, caramelo, nuez. Cuerpo completo.</p>
+                            <div class="ficha-datos">
+                                <div class="dato-box"><strong>ALTITUD</strong>1.300 msnm</div>
+                                <div class="dato-box"><strong>PROCESO</strong>Natural 25d</div>
+                                <div class="dato-box"><strong>TUESTE</strong>Medio-oscuro</div>
+                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 84-86</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="lima" class="tab-content">
+                    <div class="cafe-ficha">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Typica Lima">
+                        <div>
+                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">TYPICA LIMA</h3>
+                            <p style="margin-bottom:20px">Finca Lima, Tarrazú</p>
+                            <p>Línea Typica. Notas: frutos rojos, panela, especias dulces. Acidez málica.</p>
+                            <div class="ficha-datos">
+                                <div class="dato-box"><strong>ALTITUD</strong>1.750 msnm</div>
+                                <div class="dato-box"><strong>PROCESO</strong>Lavado + fermentación 36h</div>
+                                <div class="dato-box"><strong>TUESTE</strong>Medio</div>
+                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 88-90</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="lourdes" class="tab-content">
+                    <div class="cafe-ficha">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Typica Lourdes">
+                        <div>
+                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">TYPICA LOURDES</h3>
+                            <p style="margin-bottom:20px">Lourdes de Naranjo</p>
+                            <p>Microlote. Perfil: floral, té verde, durazno. Cuerpo sedoso.</p>
+                            <div class="ficha-datos">
+                                <div class="dato-box"><strong>ALTITUD</strong>1.650 msnm</div>
+                                <div class="dato-box"><strong>PROCESO</strong>Honey amarillo 15d</div>
+                                <div class="dato-box"><strong>TUESTE</strong>Medio-claro</div>
+                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 87-89</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="roque" class="tab-content">
+                    <div class="cafe-ficha">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" alt="Typica San Roque">
+                        <div>
+                            <h3 style="color:#D4AF37;font-size:2rem;margin-bottom:15px">TYPICA SAN ROQUE</h3>
+                            <p style="margin-bottom:20px">Finca San Roque, Poás</p>
+                            <p>Notas: cacao, avellana, vainilla. Baja acidez, dulce.</p>
+                            <div class="ficha-datos">
+                                <div class="dato-box"><strong>ALTITUD</strong>1.700 msnm</div>
+                                <div class="dato-box"><strong>PROCESO</strong>Natural anaeróbico 30d</div>
+                                <div class="dato-box"><strong>TUESTE</strong>Medio</div>
+                                <div class="dato-box"><strong>PUNTAJE</strong>SCA 86-87</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-    <section id="cafe">
-        <h2>CAFÉ GOURMET</h2>
-        <h3 class="gold-text">La Historia: De la Finca La Esperanza a tu Taza</h3>
-        <p style="line-height:1.9;font-size:18px;margin:30px 0">Todo empezó en 2008 cuando Don Alberto, caficultor de 3ra generación en Huila, nos dijo: "Mi café se vende como commodity, pero sabe a gloria". Decidimos cambiar eso.</p>
-        <p style="line-height:1.9;font-size:18px;margin:30px 0">Hoy trabajamos con 120 fincas entre 1500 y 2100 msnm. Instalamos laboratorios de catación en origen, capacitamos en procesos post-cosecha y pagamos hasta 40% sobre bolsa NY. Cada lote se cata, se traza y se cuenta su historia.</p>
-
-        <h3 class="gold-text" style="margin-top:70px;font-size:2.5rem">NUESTRAS 8 VARIEDADES DE ORIGEN</h3>
-        <p style="text-align:center;margin-bottom:40px;font-size:18px">Haz clic en cada variedad para desplegar ficha técnica completa</p>
-        
-        <div class="variedades">
-            <div class="variedad" onclick="toggleVariedad('v1',event)">
-                <h4>1. GEISHA</h4>
-                <p class="origen">Sierra Nevada - 2000msnm</p>
-                <span class="badge">SCA 90+</span><span class="badge">Premium</span>
-                <div class="variedad-desc" id="v1">
-                    <strong>Notas de Cata:</strong>
-                    <p>Bergamota, mango maduro, floral intenso, té Earl Grey, jazmín, papaya, miel. Acidez cítrica elegante tipo limón Meyer. Dulzura etérea.</p>
-                    <strong>Perfil Técnico:</strong>
-                    <p>Altura: 2000-2100 msnm | Proceso: Lavado experimental con levaduras | Varietal: Geisha panameña | Cosecha: Nov-Feb | Cuerpo: Etéreo, sedoso | Acidez: Cítrica alta</p>
-                    <strong>Características:</strong>
-                    <p>La variedad más exclusiva y cara del mundo. Solo 5 sacos/año. Altura extrema + microclima de montaña costera produce perfil floral-terpénico inigualable. Precio: $50-80 USD/lb verde. Solo bajo reserva.</p>
-                    <button class="btn btn-small" onclick="addToCart('Café Geisha', 'Consultar', event)">Consultar</button>
-                </div>
-            </div>
-
-            <div class="variedad" onclick="toggleVariedad('v2',event)">
-                <h4>2. VILLA SARCHÍ</h4>
-                <p class="origen">Costa Rica adaptado - 1700msnm</p>
-                <span class="badge">SCA 86+</span><span class="badge">Especialidad</span>
-                <div class="variedad-desc" id="v2">
-                    <strong>Notas de Cata:</strong>
-                    <p>Cítricos dulces, caramelo, chocolate con leche, nuez, acidez brillante balanceada</p>
-                    <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1600-1800 msnm | Proceso: Lavado tradicional | Varietal: Villa Sarchí | Cosecha: May-Oct | Cuerpo: Medio, cremoso | Acidez: Media-alta</p>
-                    <button class="btn btn-small" onclick="addToCart('Café Villa Sarchí', 'Saco 70kg', event)">Añadir</button>
-                </div>
-            </div>
-
-            <div class="variedad" onclick="toggleVariedad('v3',event)">
-                <h4>3. KENIA</h4>
-                <p class="origen">SL28/SL34 - 1800msnm</p>
-                <span class="badge">SCA 87+</span><span class="badge">Exótico</span>
-                <div class="variedad-desc" id="v3">
-                    <strong>Notas de Cata:</strong>
-                    <p>Grosella negra, vino tinto, tomate seco, acidez fosfórica, cuerpo jugoso</p>
-                    <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1700-1900 msnm | Proceso: Lavado doble fermentación | Varietal: SL28, SL34 | Cosecha: Jun-Dic | Cuerpo: Jugoso | Acidez: Alta</p>
-                    <button class="btn btn-small" onclick="addToCart('Café Kenia', 'Saco 70kg', event)">Añadir</button>
-                </div>
-            </div>
-
-            <div class="variedad" onclick="toggleVariedad('v4',event)">
-                <h4>4. CENTROAMERICANO</h4>
-                <p class="origen">Blend Caturra/Catuai - 1600msnm</p>
-                <span class="badge">SCA 85+</span><span class="badge">Balanceado</span>
-                <div class="variedad-desc" id="v4">
-                    <strong>Notas de Cata:</strong>
-                    <p>Chocolate, caramelo, nuez, cítricos suaves, acidez media balanceada</p>
-                    <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1500-1700 msnm | Proceso: Lavado | Varietal: Caturra, Catuai, Bourbon | Cosecha: Sep-Ene | Cuerpo: Medio | Acidez: Media</p>
-                    <button class="btn btn-small" onclick="addToCart('Café Centroamericano', 'Saco 70kg', event)">Añadir</button>
-                </div>
-            </div>
-
-            <div class="variedad" onclick="toggleVariedad('v5',event)">
-                <h4>5. TYPICA LIMA</h4>
-                <p class="origen">Typica tradicional - 1700msnm</p>
-                <span class="badge">SCA 84.5</span><span class="badge">Clásico</span>
-                <div class="variedad-desc" id="v5">
-                    <strong>Notas de Cata:</strong>
-                    <p>Panela, chocolate amargo, especias dulces, acidez cítrica suave tipo lima</p>
-                    <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1600-1800 msnm | Proceso: Lavado tradicional | Varietal: Typica | Cosecha: Abr-Sep | Cuerpo: Medio | Acidez: Media-baja</p>
-                    <button class="btn btn-small" onclick="addToCart('Café Typica Lima', 'Saco 70kg', event)">Añadir</button>
-                </div>
-            </div>
-
-            <div class="variedad" onclick="toggleVariedad('v6',event)">
-                <h4>6. TYPICA LOURDES</h4>
-                <p class="origen">Typica Honey - 1750msnm</p>
-                <span class="badge">SCA 85.5</span><span class="badge">Honey</span>
-                <div class="variedad-desc" id="v6">
-                    <strong>Notas de Cata:</strong>
-                    <p>Miel, caramelo, frutos secos, almendra, cuerpo sedoso, dulzura intensa</p>
-                    <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1700-1850 msnm | Proceso: Honey rojo | Varietal: Typica | Cosecha: May-Oct | Cuerpo: Sedoso, completo | Acidez: Baja-media</p>
-                    <button class="btn btn-small" onclick="addToCart('Café Typica Lourdes', 'Saco 70kg', event)">Añadir</button>
-                </div>
-            </div>
-
-            <div class="variedad" onclick="toggleVariedad('v7',event)">
-                <h4>7. TYPICA SAN ROQUE</h4>
-                <p class="origen">Typica Natural - 1700msnm</p>
-                <span class="badge">SCA 86+</span><span class="badge">Natural</span>
-                <div class="variedad-desc" id="v7">
-                    <strong>Notas de Cata:</strong>
-                    <p>Frutos rojos, fresa, vino, chocolate, cuerpo completo, fermento frutal</p>
-                    <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1650-1800 msnm | Proceso: Natural, secado en fruta 28 días | Varietal: Typica | Cosecha: Oct-Feb | Cuerpo: Completo | Acidez: Media</p>
-                    <button class="btn btn-small" onclick="addToCart('Café Typica San Roque', 'Saco 70kg', event)">Añadir</button>
-                </div>
-            </div>
-
-            <div class="variedad" onclick="toggleVariedad('v8',event)">
-                <h4>8. TYPICA MEJORADO</h4>
-                <p class="origen">Cenicafé - 1950msnm</p>
-                <span class="badge">SCA 87+</span><span class="badge">Experimental</span>
-                <div class="variedad-desc" id="v8">
-                    <strong>Notas de Cata:</strong>
-                    <p>Floral, jazmín, té verde, cítricos, miel, acidez brillante compleja</p>
-                    <strong>Perfil Técnico:</strong>
-                    <p>Altura: 1900-2050 msnm | Proceso: Lavado con levaduras | Varietal: Typica Mejorado Cenicafé | Cosecha: Jun-Nov | Cuerpo: Etéreo | Acidez: Alta</p>
-                    <button class="btn btn-small" onclick="addToCart('Café Typica Mejorado', 'Saco 35kg', event)">Añadir</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="calidad">
-        <h2>CALIDAD QUE SE VE, SE TOCA, SE CERTIFICA</h2>
-        <div class="calidad-grid">
-            <div class="calidad-card"><h3>100%</h3><p class="gold-text">TRAZABILIDAD BLOCKCHAIN</p><p>Del lote al contenedor. Escanea el QR en cada caja y ve la finca, fecha de cosecha, fotos del productor.</p></div>
-            <div class="calidad-card"><h3>5</h3><p class="gold-text">CERTIFICACIONES</p><p>GlobalG.A.P, BRC AA+, Orgánico USDA/EU, Kosher, Comercio Justo Fairtrade</p></div>
-            <div class="calidad-card"><h3>0</h3><p class="gold-text">ATAJOS TOLERADOS</p><p>Sin maduración con etileno. Sin mezcla de orígenes. Laboratorio HPLC propio.</p></div>
-        </div>
-    </section>
-
     <section id="mayoristas">
-        <h2>MAYORISTAS</h2>
-        <div class="mayoristas-hero">
-            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920">
-                <source src="https://cdn.coverr.co/videos/coverr-coffee-beans-falling-into-a-cup-4018/1080p.mp4" type="video/mp4">
-            </video>
-            <div class="slogan"><h3 class="gold-text">TU ÉXITO CABE EN UN CONTENEDOR</h3><p>Pero empieza con un pallet</p></div>
-        </div>
-        <div style="text-align:center">
-            <h3 class="gold-text">Capacidad: 40 contenedores FCL / mes</h3>
-            <p style="font-size:18px;margin:20px 0">Contenedores completos 20' y 40'. Pallets mixtos desde 1 pallet. Marca blanca con tu logo.</p>
-            <a class="btn" style="margin-top:30px" onclick="scrollToSection('pedidos')">SOLICITAR COTIZACIÓN</a>
-        </div>
+        <h2 class="section-title">MAYORISTAS</h2>
+        <p style="text-align:center;max-width:800px;margin:0 auto 30px;line-height:1.8">Exportamos café de especialidad y productos gourmet a todo el mundo. Microlotes certificados SCA. Capacidad: 20 contenedores/mes. Incoterms FOB/EXW.</p>
+        <video autoplay muted loop playsinline>
+            <source src="contenedores.mp4.mp4" type="video/mp4">
+        </video>
     </section>
-
-    <section id="pedidos">
-        <h2>PEDIDOS</h2>
-        <div class="formulario" style="display:block">
-            <select id="tipo"><option value="">Tipo de cliente *</option><option>Mayorista - FCL</option><option>Distribuidor</option><option>Retail</option><option>HORECA</option></select>
-            <input type="text" id="nombre" placeholder="Nombre / Empresa *">
-            <input type="email" id="email" placeholder="Email *">
-            <input type="tel" id="telefono" placeholder="Teléfono / WhatsApp *">
-            <input type="text" id="pais" placeholder="País / Puerto destino *">
-            <textarea id="mensaje" rows="5" placeholder="Productos, volumen, fecha requerida..."></textarea>
-            <button class="btn" onclick="enviarWhatsApp()">ENVIAR POR WHATSAPP</button>
-        </div>
-    </section>
-
     <section id="contacto">
-        <h2>CONTACTO</h2>
-        
-        <div class="contacto-item" onclick="toggleContacto('c1')">
-            <h3>▶ Oficinas y Planta</h3>
-            <div class="contacto-content" id="c1">
-                <p><strong>Colombia:</strong> Km 3 Vía Lebrija, Santander</p>
-                <p>Planta de proceso y oficinas centrales</p>
-                <p><strong>España:</strong> Valencia, Comunidad Valenciana</p>
-                <p>Hub logístico Europa</p>
-            </div>
-        </div>
-
-        <div class="contacto-item" onclick="toggleContacto('c2')">
-            <h3>▶ Canales Directos</h3>
-            <div class="contacto-content" id="c2">
-                <p><strong>WhatsApp Ventas:</strong> +57 300 000 0000</p>
-                <p><strong>Email:</strong> ventas@jollyfoods.com</p>
-                <p><strong>LinkedIn:</strong> /company/jolly-foods</p>
-                <p><strong>Instagram:</strong> @jollyfoods.oficial</p>
+        <h2 class="section-title">CONTACTO</h2>
+        <div style="text-align:center">
+            <button id="contacto-btn" onclick="toggleContacto()">Ver Datos de Contacto</button>
+            <div id="contacto-info">
+                <p style="margin:10px 0"><strong>Email:</strong> info@jollyfoods.cr</p>
+                <p style="margin:10px 0"><strong>WhatsApp:</strong> +506 8888-0000</p>
+                <p style="margin:10px 0"><strong>Dirección:</strong> Naranjo, Alajuela, Costa Rica</p>
+                <p style="margin:10px 0"><strong>Horario:</strong> Lun-Vie 8am-5pm</p>
             </div>
         </div>
     </section>
-
-    <footer>
-        <p class="gold-text" style="font-size:20px;margin-bottom:15px">JOLLY FOODS - DEL ORIGEN A TU ÉXITO</p>
-        <p>Piña MD2 • Palmito Premium • 8 Variedades de Café de Origen</p>
-        <p style="margin-top:25px;font-size:14px">© 2024 Jolly Foods. Colombia - España. Todos los derechos reservados.</p>
-    </footer>
-
+    <section id="pedidos">
+        <h2 class="section-title">PEDIDOS</h2>
+        <form style="max-width:600px;margin:0 auto" onsubmit="alert('Pedido enviado! Te contactaremos pronto.');return false;">
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" required>
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" required>
+            </div>
+            <div class="form-group">
+                <label>Tipo de Cliente</label>
+                <select required>
+                    <option value="">Seleccionar</option>
+                    <option value="retail">Retail</option>
+                    <option value="mayorista">Mayorista</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Mensaje / Productos de interés</label>
+                <textarea required></textarea>
+            </div>
+            <button type="submit" class="btn" style="width:100%">Enviar Pedido</button>
+        </form>
+    </section>
     <div class="cart-modal" id="cartModal">
-        <div class="cart-header"><h3 class="gold-text">TU PEDIDO</h3><button onclick="toggleCart()" style="background:none;border:none;color:#D4AF37;font-size:30px;cursor:pointer">×</button></div>
-        <div id="cartItems"></div>
-        <div class="cart-total"><p style="font-size:20px">Total: <span class="gold-text">Solicitar cotización</span></p><button class="btn" style="width:100%;margin-top:20px" onclick="enviarPedidoWhatsApp()">FINALIZAR POR WHATSAPP</button></div>
+        <div class="cart-content">
+            <h3 style="color:#D4AF37;margin-bottom:20px">TU CARRITO</h3>
+            <div id="cartItems"></div>
+            <div style="border-top:2px solid #D4AF37;padding-top:20px;margin-top:20px">
+                <h4 style="display:flex;justify-content:space-between"><span>Total:</span><span id="cartTotal">$0.00</span></h4>
+            </div>
+            <button class="btn" style="width:100%;margin-top:20px" onclick="alert('Compra procesada!')">FINALIZAR COMPRA</button>
+            <button class="btn" style="width:100%;background:#333;border-color:#333" onclick="closeCart()">CERRAR</button>
+        </div>
     </div>
-
-    <button id="musicBtn" onclick="toggleMusic()">🎵</button>
-    <audio id="bgMusic" loop><source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg"></audio>
-
+    <footer>
+        <p style="color:#D4AF37;font-weight:bold;margin-bottom:10px">JOLLY FOODS © 2026</p>
+        <a href="#" onclick="alert('Descargando PDF...')" style="color:#D4AF37">Descargar Catálogo PDF</a>
+    </footer>
     <script>
         let cart = [];
-        let musicPlaying = false;
-        function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
-        function toggleCatalogo(id){document.getElementById(id).classList.toggle('active')}
-        function toggleVariedad(id,e){e.stopPropagation();document.getElementById(id).classList.toggle('active')}
-        function toggleContacto(id){document.getElementById(id).classList.toggle('active')}
-        function toggleCart(){document.getElementById('cartModal').classList.toggle('active')}
-        function addToCart(product,format,e){e.stopPropagation();cart.push({product,format});updateCart();alert('✓ Añadido: '+product)}
-        function updateCart(){document.getElementById('cartCount').textContent=cart.length;let html='';cart.forEach((item,i)=>{html+=`<div class="cart-item"><div><strong>${item.product}</strong><br><small>${item.format}</small></div><button onclick="removeFromCart(${i})">X</button></div>`});document.getElementById('cartItems').innerHTML=html||'<p>Tu carrito está vacío</p>'}
-        function removeFromCart(i){cart.splice(i,1);updateCart()}
-        function enviarWhatsApp(){const tipo=document.getElementById('tipo').value;const nombre=document.getElementById('nombre').value;const email=document.getElementById('email').value;const telefono=document.getElementById('telefono').value;const pais=document.getElementById('pais').value;const mensaje=document.getElementById('mensaje').value;if(!nombre||!email||!telefono){alert('Completa los campos obligatorios *');return}const text=`*PEDIDO JOLLY FOODS*%0A%0ATipo: ${tipo}%0ANombre: ${nombre}%0AEmail: ${email}%0ATel: ${telefono}%0APaís: ${pais}%0A%0ADetalle:%0A${
+        function toggleCat(el){document.querySelectorAll('.catalogo-item').forEach(i=>{if(i!==el){i.querySelector('.catalogo-content').classList.remove('active')}});el.querySelector('.catalogo-content').classList.toggle('active');}
+        function showTab(e,id){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));e.target.classList.add('active');document.getElementById(id).classList.add('active');}
+        function toggleContacto(){document.getElementById('contacto-info').classList.toggle('active');}
+        function addCart(name,price){cart.push({name,price});updateCart();alert('✓ '+name+' agregado al carrito');}
+        function updateCart(){document.getElementById('cartCount').textContent=cart.length;const items=document.getElementById('cartItems');items.innerHTML='';let total=0;cart.forEach((item,i)=>{total+=item.price;items.innerHTML+=`<div class="cart-item"><span>${item.name}</span><span>$${item.price.toFixed(2)}</span></div>`;});document.getElementById('cartTotal').textContent='$'+total.toFixed(2);}
+        document.getElementById('cartBtn').onclick=()=>document.getElementById('cartModal').classList.add('active');
+        function closeCart(){document.getElementById('cartModal').classList.remove('active');}
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.onclick=function(e){e.preventDefault();const id=this.getAttribute('href').substring(1);document.getElementById(id).scrollIntoView({behavior:'smooth'});}});
+    </script>
+</body>
+</html>
